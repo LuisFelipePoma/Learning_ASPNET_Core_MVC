@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "5Bibf8nMh5JVoMa2T7XGWpdYG6oyUNiuq8eHd/juvZ3T1zE8BHl6JP14fCGGwaBBLvzvGFFA2R0tRLoUE8pPoQ==",
+  "success": true,
+  "projectFilePath": "/home/felipe/Disk/Codes/Projects/REST_Web_API/src/Catalog/Catalog.csproj",
+  "expectedPackageFiles": [
+    "/home/felipe/.nuget/packages/microsoft.aspnetcore.openapi/8.0.0/microsoft.aspnetcore.openapi.8.0.0.nupkg.sha512",
+    "/home/felipe/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/home/felipe/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
+    "/home/felipe/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "/home/felipe/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "/home/felipe/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "/home/felipe/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
