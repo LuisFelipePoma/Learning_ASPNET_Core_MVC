@@ -14,7 +14,7 @@ BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String))
 builder.Services.AddSingleton<IMongoClient>(ServiceProvider =>
 {
 	var settings = builder.Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
-	return new MongoClient(settings.ConnectionString);
+	return new MongoClient(settings?.ConnectionString);
 });
 builder.Services.AddSingleton<IItemsRepository, MongoDbItemsRepository>();
 builder.Services.AddEndpointsApiExplorer();
