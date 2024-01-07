@@ -19,7 +19,11 @@ builder.Services.AddSingleton<IMongoClient>(ServiceProvider =>
 builder.Services.AddSingleton<IItemsRepository, MongoDbItemsRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+	options.SuppressAsyncSuffixInActionNames = false; // This is avoid the warning in the controller's methods.
+}
+);
 
 var app = builder.Build();
 
