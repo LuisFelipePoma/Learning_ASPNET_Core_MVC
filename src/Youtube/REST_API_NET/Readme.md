@@ -1,5 +1,9 @@
 # Catalog REST API with .NET ASPNET Core
 
+## Resources
+
+- https://www.youtube.com/watch?v=ZXdFisA_hOY&t=3516s
+
 ## How to set up the MongoDB with Docker
 
 1. First we add the package to the project
