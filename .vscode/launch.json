@@ -1,0 +1,17 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "C#: Catalog [Default Configuration]",
+			"type": "dotnet",
+			"request": "launch",
+			"projectPath": "${workspaceFolder}\\src\\Youtube\\REST_API_NET\\Catalog.csproj"
+		},
+		{
+			"name": "C#: MyBGList [Default Configuration]",
+			"type": "dotnet",
+			"request": "launch",
+			"projectPath": "${workspaceFolder}\\src\\Orelly\\Building_Web_ASPNET\\MyBGList\\MyBGList.csproj"
+		}
+	]
+}
