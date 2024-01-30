@@ -3,48 +3,34 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// This add the OpenAPI document to the service collection
+// We’re telling Swagger to resolve all conflicts related to duplicate routing handlers by always taking the first one found and ignoring the others. 
+builder.Services.AddSwaggerGen(opts =>
+	opts.ResolveConflictingActions(apiDesc => apiDesc.First())
+	);
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Configuration.GetValue<bool>("UseSwagger"))
 {
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
-if (app.Configuration.GetValue<bool>("UseDeveloperExceptionPage"))   
-    app.UseDeveloperExceptionPage();                                 
+
+if (app.Configuration.GetValue<bool>("UseDeveloperExceptionPage"))
+	app.UseDeveloperExceptionPage();
 else
 	app.UseExceptionHandler("/error");
 
 
 app.UseHttpsRedirection();
-
-var summaries = new[]
-{
-	"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-	var forecast = Enumerable.Range(1, 5).Select(index =>
-		new WeatherForecast
-		(
-			DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-			Random.Shared.Next(-20, 55),
-			summaries[Random.Shared.Next(summaries.Length)]
-		))
-		.ToArray();
-	return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+// Minimal API
+app.MapGet("/error", () => Results.Problem());
 app.MapGet("/error/test", () => { throw new Exception("test"); });
 
-app.Run();
+// Controllers
+app.MapControllers();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-	public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+app.Run();
