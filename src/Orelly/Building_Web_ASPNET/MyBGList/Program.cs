@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,7 +15,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(cfg =>
     {
-        cfg.WithOrigins(builder.Configuration["AllowedOrigins"]);
+		_ = cfg.WithOrigins(builder.Configuration["AllowedOrigins"]);
         cfg.AllowAnyHeader();
         cfg.AllowAnyMethod();
     });
@@ -54,6 +57,24 @@ app.MapGet(
     {
         throw new Exception("test");
     }
+);
+
+app.MapGet(
+    "/cod/test",
+    [EnableCors("AnyOrigin")]
+    [ResponseCache(NoStore = true)]
+    () =>
+        Results.Text(
+            "<script>"
+                + "window.alert('Your client supports JavaScript!"
+                + "\\r\\n\\r\\n"
+                + $"Server time (UTC): {DateTime.UtcNow.ToString("o")}"
+                + "\\r\\n"
+                + "Client time (UTC): ' + new Date().toISOString());"
+                + "</script>"
+                + "<noscript>Your client does not support JavaScript</noscript>",
+            "text/html"
+        )
 );
 
 // Controllers
